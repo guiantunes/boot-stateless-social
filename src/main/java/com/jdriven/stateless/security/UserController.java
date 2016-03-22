@@ -30,23 +30,23 @@ public class UserController {
 	@RequestMapping(value = "/admin/api/user/{user}/grant/role/{role}", method = RequestMethod.POST)
 	public ResponseEntity<String> grantRole(@PathVariable User user, @PathVariable UserRole role) {
 		if (user == null) {
-			return new ResponseEntity<>("invalid user id", HttpStatus.UNPROCESSABLE_ENTITY);
+			return new ResponseEntity<String>("invalid user id", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 
 		user.grantRole(role);
 		userRepository.saveAndFlush(user);
-		return new ResponseEntity<>("role granted", HttpStatus.OK);
+		return new ResponseEntity<String>("role granted", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/admin/api/user/{user}/revoke/role/{role}", method = RequestMethod.POST)
 	public ResponseEntity<String> revokeRole(@PathVariable User user, @PathVariable UserRole role) {
 		if (user == null) {
-			return new ResponseEntity<>("invalid user id", HttpStatus.UNPROCESSABLE_ENTITY);
+			return new ResponseEntity<String>("invalid user id", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 
 		user.revokeRole(role);
 		userRepository.saveAndFlush(user);
-		return new ResponseEntity<>("role revoked", HttpStatus.OK);
+		return new ResponseEntity<String>("role revoked", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/admin/api/user", method = RequestMethod.GET)
