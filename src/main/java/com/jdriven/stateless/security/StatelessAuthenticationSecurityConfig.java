@@ -49,8 +49,8 @@ public class StatelessAuthenticationSecurityConfig extends WebSecurityConfigurer
 			}
 		});
 
-		http.exceptionHandling().and().anonymous().and().servletApi().and().headers().cacheControl().and()
-				.authorizeRequests()
+		http.exceptionHandling().and().anonymous().and().servletApi().and().headers().cacheControl();
+		http.authorizeRequests()
 
 				//allow anonymous font and template requests
 				.antMatchers("/").permitAll()
